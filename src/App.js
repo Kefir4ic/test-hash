@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import XLSX from 'xlsx';
+import * as XLSX from 'xlsx';
+import md5 from "md5";
 
 function UserGenerator() {
   const [regionCode, setRegionCode] = useState('');
@@ -10,7 +11,7 @@ function UserGenerator() {
     const generatedUsers = [];
     for (let i = 0; i < numberOfUsers; i++) {
       const password = Math.random().toString(36).substr(2, 10); // Генерируем случайный пароль до 10 символов
-      const passwordHash = 2222/* здесь нужно добавить код для хеширования пароля */;
+      const passwordHash = md5(password)/* здесь нужно добавить код для хеширования пароля */;
       const userData = {
         password,
         passwordHash,
